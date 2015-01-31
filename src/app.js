@@ -1,27 +1,12 @@
-var GroupInfo = React.createClass({
-    render: function() {
-      return (
-        <Group onClick={this.handleClick} />
-      )
-    },
-    handleClick: function(e) {
-      console.log(this);
-      React.render(
-        <Group />,
-        document.getElementById('info')
-      );
-    }
-});
-
 var Group = React.createClass({
   render: function() {
     return (
       <div>
-      <img src="images/group.jpeg" usemap="#friendmap" />
+      <img src="images/group.jpeg" useMap="#friendmap" />
       <map name="friendmap">
-          <area shape="circle" coords="56, 124, 38" id="1212144" href="#" onClick={this.props.onClick} />
-          <area shape="circle" coords="208, 120, 28" id="1212153" href="#" onClick={this.props.onClick} />
-          <area shape="circle" coords="345, 129, 38" id="1212156" href="#" onClick={this.props.onClick} />
+          <area shape="circle" coords="56, 124, 38" id="1212144" href="javascript:showStudentInfo(1212144)" />
+          <area shape="circle" coords="208, 120, 28" id="1212153" href="javascript:showStudentInfo(1212153)" />
+          <area shape="circle" coords="345, 129, 38" id="1212156" href="javascript:showStudentInfo(1212156)" />
       </map>
 
       <h2>Danh sách thành viên</h2>
@@ -49,30 +34,26 @@ var Group = React.createClass({
 var StudentInfo = React.createClass({
     render: function() {
       return (
-        <Student info={this.props.info} onClick={this.handleClick} />
+        <Student info={this.props.info} click={this.handleClick} />
       )
     },
     handleClick: function(e) {
+      console.log(e);
       React.render(
-        <GroupInfo />,
+        <Group />,
         document.getElementById('info')
       );
     }
 });
 
 var Student = React.createClass({
-  goBack: function() {
-    console.log('Test');
-    React.render(
-      <Group />,
-      document.getElementById('info')
-    );
-  },
 
   render: function() {
+    var imgPath = "images/" + this.props.info.studentId + ".jpg";
     return (
       <div>
-      <h2><button className="btn btn-info back" onClick={this.props.onClick}><span className="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</button> Thông tin thành viên</h2>
+      <img src={imgPath} />
+      <h2><button className="btn btn-info" onClick={this.props.click}><span className="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back</button> Thông tin thành viên</h2>
       <table>
         <tbody>
           <tr>
@@ -80,7 +61,7 @@ var Student = React.createClass({
             <td>{this.props.info.name}</td>
           </tr>
           <tr>
-            <td>MSSV</td>
+            <td>MSSV:</td>
             <td>{this.props.info.studentId}</td>
           </tr>
           <tr>
@@ -107,9 +88,9 @@ var students = {
   1212144: {
     name: 'Hà Như Huy',
     studentId: '1212144',
-    birthday: '22/12/1994',
-    email: 'mike358015@gmail.com',
-    phone: '0128 360 6038'
+    birthday: '12/05/1994',
+    email: 'hnhuy234@gmail.com',
+    phone: '096 324 3095'
   },
   1212153: {
     name: 'Phạm Nhật Huy',

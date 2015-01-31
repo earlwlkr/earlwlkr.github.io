@@ -7,3 +7,7 @@ body {
 td {
     padding: 20px 25px 5px 20px;
 }
+
+img {
+    border-style: solid;
+}

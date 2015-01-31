@@ -1,27 +1,12 @@
-var GroupInfo = React.createClass({displayName: "GroupInfo",
-    render: function() {
-      return (
-        React.createElement(Group, {onClick: this.handleClick})
-      )
-    },
-    handleClick: function(e) {
-      console.log(this);
-      React.render(
-        React.createElement(Group, null),
-        document.getElementById('info')
-      );
-    }
-});
-
 var Group = React.createClass({displayName: "Group",
   render: function() {
     return (
       React.createElement("div", null, 
-      React.createElement("img", {src: "images/group.jpeg", usemap: "#friendmap"}), 
+      React.createElement("img", {src: "images/group.jpeg", useMap: "#friendmap"}), 
       React.createElement("map", {name: "friendmap"}, 
-          React.createElement("area", {shape: "circle", coords: "56, 124, 38", id: "1212144", href: "#", onClick: this.props.onClick}), 
-          React.createElement("area", {shape: "circle", coords: "208, 120, 28", id: "1212153", href: "#", onClick: this.props.onClick}), 
-          React.createElement("area", {shape: "circle", coords: "345, 129, 38", id: "1212156", href: "#", onClick: this.props.onClick})
+          React.createElement("area", {shape: "circle", coords: "56, 124, 38", id: "1212144", href: "javascript:showStudentInfo(1212144)"}), 
+          React.createElement("area", {shape: "circle", coords: "208, 120, 28", id: "1212153", href: "javascript:showStudentInfo(1212153)"}), 
+          React.createElement("area", {shape: "circle", coords: "345, 129, 38", id: "1212156", href: "javascript:showStudentInfo(1212156)"})
       ), 
 
       React.createElement("h2", null, "Danh sách thành viên"), 
@@ -49,30 +34,26 @@ var Group = React.createClass({displayName: "Group",
 var StudentInfo = React.createClass({displayName: "StudentInfo",
     render: function() {
       return (
-        React.createElement(Student, {info: this.props.info, onClick: this.handleClick})
+        React.createElement(Student, {info: this.props.info, click: this.handleClick})
       )
     },
     handleClick: function(e) {
+      console.log(e);
       React.render(
-        React.createElement(GroupInfo, null),
+        React.createElement(Group, null),
         document.getElementById('info')
       );
     }
 });
 
 var Student = React.createClass({displayName: "Student",
-  goBack: function() {
-    console.log('Test');
-    React.render(
-      React.createElement(Group, null),
-      document.getElementById('info')
-    );
-  },
 
   render: function() {
+    var imgPath = "images/" + this.props.info.studentId + ".jpg";
     return (
       React.createElement("div", null, 
-      React.createElement("h2", null, React.createElement("button", {className: "btn btn-info back", onClick: this.props.onClick}, React.createElement("span", {className: "glyphicon glyphicon-arrow-left", "aria-hidden": "true"}), " Back"), " Thông tin thành viên"), 
+      React.createElement("img", {src: imgPath}), 
+      React.createElement("h2", null, React.createElement("button", {className: "btn btn-info", onClick: this.props.click}, React.createElement("span", {className: "glyphicon glyphicon-arrow-left", "aria-hidden": "true"}), " Back"), " Thông tin thành viên"), 
       React.createElement("table", null, 
         React.createElement("tbody", null, 
           React.createElement("tr", null, 
@@ -80,7 +61,7 @@ var Student = React.createClass({displayName: "Student",
             React.createElement("td", null, this.props.info.name)
           ), 
           React.createElement("tr", null, 
-            React.createElement("td", null, "MSSV"), 
+            React.createElement("td", null, "MSSV:"), 
             React.createElement("td", null, this.props.info.studentId)
           ), 
           React.createElement("tr", null, 
@@ -105,18 +86,18 @@ var Student = React.createClass({displayName: "Student",
 
 var students = {
   1212144: {
-    name: 'Huỳnh Nguyễn Phúc Huỳnh',
+    name: 'Hà Như Huy',
     studentId: '1212144',
-    birthday: '22/12/1994',
-    email: 'mike358015@gmail.com',
-    phone: '0128 360 6038'
+    birthday: '12/05/1994',
+    email: 'hnhuy234@gmail.com',
+    phone: '096 324 3095'
   },
   1212153: {
-    name: 'Huỳnh Nguyễn Phúc Huỳnh',
-    studentId: '1212156',
-    birthday: '22/12/1994',
-    email: 'mike358015@gmail.com',
-    phone: '0128 360 6038'
+    name: 'Phạm Nhật Huy',
+    studentId: '1212153',
+    birthday: '10/09/1994',
+    email: 'pnhuy94@gmail.com',
+    phone: '0165 946 0939'
   },
   1212156: {
     name: 'Huỳnh Nguyễn Phúc Huỳnh',
