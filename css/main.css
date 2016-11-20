@@ -1,7 +1,16 @@
 body {
   font-family: 'Roboto Mono', monospace, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #eeeeee;
+  color: #444;
 }
 
-.container {
+@media (min-width: 550px) {
+.introduction {
   margin-top: 200px;
+}
+}
+
+.sub-header {
+  font-size: 2.0rem;
+  color: rgba(0, 0, 0, 0.48);
 }
